@@ -62,6 +62,17 @@ const OnlyCSS = () => {
   };
   return (
     <div className="grid grid-cols-2">
+      {/* Right Side */}
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-r from-indigo-500 to-teal-400">
+        <h1 className="text-8xl font-bold text-white">WELCOME!! </h1>
+        <p className="p-7 text-center text-xl text-white">
+          You’re one step away from something awesome.{" "}
+        </p>
+        <p className="text-center text-xl text-white">
+          Register now to begin your journey with us — it only takes a minute to
+          get started.
+        </p>
+      </div>
       {/* Left Side */}
 
       <div className="flex min-h-screen items-center justify-center bg-gray-100">
@@ -240,18 +251,6 @@ const OnlyCSS = () => {
             )}
           </form>
         </div>
-      </div>
-
-      {/* Right Side */}
-      <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-r from-indigo-500 to-teal-400">
-        <h1 className="text-8xl font-bold text-white">WELCOME!! </h1>
-        <p className="p-7 text-center text-xl text-white">
-          You’re one step away from something awesome.{" "}
-        </p>
-        <p className="text-center text-xl text-white">
-          Register now to begin your journey with us — it only takes a minute to
-          get started.
-        </p>
       </div>
     </div>
   );
