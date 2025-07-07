@@ -2,11 +2,11 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import OnlyCSS from "./components/OnlyCSS";
+import SignUp from "./components/SignUp";
 function App() {
   return (
     <div>
-      <OnlyCSS />
+      <SignUp />
     </div>
   );
 }
