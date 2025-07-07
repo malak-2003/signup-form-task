@@ -1,16 +1,18 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RegisterPage from "./pages/RegisterPage";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
 
-import SignUp from "./components/SignUp";
 function App() {
   return (
-    <div>
-      <SignUp />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signup" element={<RegisterPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
-// src/App.tsx
-// className="flex min-h-screen justify-center bg-cyan-50 p-4"
