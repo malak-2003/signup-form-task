@@ -7,7 +7,7 @@ type Props = {
   subheading2?: string;
 };
 
-const RegisterLayout = ({
+const TwoColumnLayout = ({
   children,
   heading,
   subheading1,
@@ -30,4 +30,4 @@ const RegisterLayout = ({
   );
 };
 
-export default RegisterLayout;
+export default TwoColumnLayout;
