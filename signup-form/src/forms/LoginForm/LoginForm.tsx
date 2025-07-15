@@ -8,14 +8,17 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import InputField from "../../components/InputField";
 
+import { z } from "zod";
 import { LoginSchema } from "./LoginSchema";
-import { Inputs } from "./types";
+
+type Inputs = z.infer<typeof LoginSchema>;
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<Inputs>({
     resolver: zodResolver(LoginSchema),
@@ -23,7 +26,29 @@ const LoginForm = () => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const user = users.find(
+      (user: { email: string }) => user.email === data.email.trim(),
+    );
+
+    if (!user) {
+      setError("email", {
+        type: "manual",
+        message: "Email not found",
+      });
+      return;
+    }
+
+    if (user.password !== data.password) {
+      setError("password", {
+        type: "manual",
+        message: "Incorrect password",
+      });
+      return;
+    }
+
+    console.log("Login successful!");
     setTimeout(() => {
       navigate("/dashboard");
     }, 1000);

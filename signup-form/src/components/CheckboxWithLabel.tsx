@@ -5,9 +5,19 @@ type Props = {
   register: any;
   name: string;
   error?: string;
+  label: string;
+  link?: string;
+  linkText?: string;
 };
 
-export default function CheckboxWithLabel({ register, name, error }: Props) {
+export default function CheckboxWithLabel({
+  register,
+  name,
+  error,
+  label,
+  link,
+  linkText,
+}: Props) {
   return (
     <div className="mb-4">
       <div className="flex items-center gap-2">
@@ -17,14 +27,14 @@ export default function CheckboxWithLabel({ register, name, error }: Props) {
           className="accent-indigo-500"
         />
         <label className="font-medium">
-          I agree to the{" "}
+          {label}{" "}
           <a
-            href="/terms"
+            href={link}
             target="_blank"
             rel="noopener noreferrer"
             className="text-indigo-600 underline hover:text-indigo-800"
           >
-            Terms & Conditions
+            {linkText}
           </a>
         </label>
       </div>

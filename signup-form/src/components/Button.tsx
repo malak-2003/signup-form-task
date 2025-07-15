@@ -1,7 +1,7 @@
 import React from "react";
 
 type ButtonProps = {
-  text?: string;
+  text: string;
 };
 
 const Button = ({ text = "Sign Up" }: ButtonProps) => {

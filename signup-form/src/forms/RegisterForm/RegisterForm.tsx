@@ -9,8 +9,10 @@ import Button from "../../components/Button";
 import InputField from "../../components/InputField";
 import CheckboxWithLabel from "../../components/CheckboxWithLabel";
 
+import { z } from "zod";
 import { RegisterSchema } from "./RegisterSchema";
-import { Inputs } from "./types";
+
+type Inputs = z.infer<typeof RegisterSchema>;
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -25,6 +27,19 @@ const RegisterForm = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const newUser = {
+      fullName: data.fullName,
+      email: data.email,
+      password: data.password,
+      dob: data.dob,
+      terms: data.terms,
+    };
+
+    localStorage.setItem("users", JSON.stringify([...users, newUser]));
+    console.log(users);
     setTimeout(() => {
       navigate("/dashboard");
     }, 1000);
@@ -77,6 +92,9 @@ const RegisterForm = () => {
           name="terms"
           register={register}
           error={errors.terms?.message}
+          label=" I agree to the"
+          link="/terms"
+          linkText="Terms & Conditions"
         />
         <Button text="Sign up" />
 
