@@ -3,6 +3,8 @@ import React from "react";
 import TwoColumnLayout from "../layouts/TwoColumnLayout";
 import LoginForm from "../forms/LoginForm/LoginForm";
 const LoginPage = () => {
+  console.log(localStorage.getItem("currentUser"));
+  console.log(localStorage.getItem("isLoggedIn"));
   return (
     <TwoColumnLayout
       heading="Welcome Back!!"

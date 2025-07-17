@@ -39,6 +39,9 @@ const RegisterForm = () => {
     };
 
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
+    localStorage.setItem("currentUser", JSON.stringify(newUser));
+    localStorage.setItem("isLoggedIn", "true");
+
     console.log(users);
     setTimeout(() => {
       navigate("/dashboard");

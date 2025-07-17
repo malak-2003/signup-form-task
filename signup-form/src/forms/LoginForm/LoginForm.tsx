@@ -14,6 +14,10 @@ import { LoginSchema } from "./LoginSchema";
 type Inputs = z.infer<typeof LoginSchema>;
 
 const LoginForm = () => {
+  // Clearing  any previous user data
+  // localStorage.removeItem("currentUser");
+  // localStorage.removeItem("isLoggedIn");
+
   const navigate = useNavigate();
   const {
     register,
@@ -49,6 +53,9 @@ const LoginForm = () => {
     }
 
     console.log("Login successful!");
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    localStorage.setItem("isLoggedIn", "true");
+
     setTimeout(() => {
       navigate("/dashboard");
     }, 1000);
@@ -79,7 +86,7 @@ const LoginForm = () => {
         <p className="text-center text-sm text-gray-500">
           Don't have an account?{" "}
           <a
-            href="/signup"
+            href="/"
             className="font-medium text-indigo-600 hover:text-indigo-500"
           >
             Sign Up
